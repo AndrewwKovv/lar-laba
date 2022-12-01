@@ -75,9 +75,15 @@
   </div>
 </nav>
  <main>
+ <div id="app">
+    <App />
+  </div>
+
   <div class="container">
     @yield('content')
   </div>
+
+  
  </main>
  <footer class="bg-light text-center text-lg-start">
 
@@ -85,5 +91,6 @@
     Ковшов Андрей 211-321
   </div>
 </footer>
+  <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_USERNAME'))
+        return $this->from('Sodaluv@gmail.com')
                     ->to('yinsbert@icloud.com')
                     ->with(['article' => $this->article, 'comment' => $this->comment])
                     ->view('mail.send');

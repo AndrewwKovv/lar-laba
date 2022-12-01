@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Comment;
+use App\Events\NewArticleEvent;
 
 
 class ArticleController extends Controller
@@ -24,7 +25,7 @@ class ArticleController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'annotation' => 'required[min:10]',
+            'annotation' => 'required|min:10',
         ]);
         $article = new Article();
         $article->name = request('name');
@@ -32,6 +33,7 @@ class ArticleController extends Controller
         $article->shortDesc = request('annotation');
         $article->desc = request('description');
         $article->save();
+        event(new NewArticleEvent($article->name));
         return redirect('/');
         
     }
